@@ -91,9 +91,13 @@ export class Driver {
         })
     }
     async exitBrowser() {
+        this.debug('Closing browser', false)
         if (this.browser != null) {
             await this.browser.close()
         }
+    }
+    async setDebugging(debuging:boolean){
+        this.debuging = debuging
     }
 
 }

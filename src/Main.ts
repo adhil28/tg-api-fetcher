@@ -1,5 +1,5 @@
 import { Driver } from "./Driver"
-const driver = new Driver({ debuging: true })
+const driver = new Driver({ debuging: false })
 var readline = require('readline');
 
 
@@ -16,7 +16,8 @@ function getInput(question: string): Promise<string> {
     })
 }
 
-export const getApiIdandHash = () => {
+export const getApiIdandHash = ({ debuging }: { debuging: boolean }) => {
+    driver.setDebugging(debuging)
     return new Promise((res, rej) => {
         driver.connect().then(async () => {
             await driver.openPage('https://my.telegram.org/auth')
